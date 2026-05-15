@@ -1,0 +1,74 @@
+{
+  "username": "drcaseyskitchen",
+  "target": "Dr. Casey Means, MD - co-founder of Levels Health, author of 'Good Energy'",
+  "profile_url": "https://www.instagram.com/drcaseyskitchen/",
+  "run_timestamp_utc": "2026-05-15T22:43:00Z",
+  "summary": "Profile-level metadata was successfully retrieved from the public og:description meta tag. Individual post/reel data (shortcodes, captions, likes, views, dates) could NOT be retrieved: every logged-out endpoint is now login-walled, rate-limited (HTTP 429), or blocked. No post-level records were recovered by any of the 7 methods.",
+  "profile": {
+    "full_name": "Casey Means, MD",
+    "username": "drcaseyskitchen",
+    "followers_text": "844K",
+    "following_text": "368",
+    "posts_text": "846",
+    "biography": "#1 NYT Bestselling Author: Good Energy / Writing to 200,000 in my Tuesday newsletter / Co-founder @levels / Working toward a healthy + limitless world",
+    "source": "og:description meta tag of https://www.instagram.com/drcaseyskitchen/ (HTTP 200)"
+  },
+  "posts": [],
+  "total_posts_recovered": 0,
+  "attempts": {
+    "1_reels_html": {
+      "url": "https://www.instagram.com/drcaseyskitchen/reels/",
+      "status": 200,
+      "bytes": 914386,
+      "json_blobs_found": 36,
+      "blob_type": "<script type=\"application/json\">",
+      "media_items_recovered": 0,
+      "note": "Page returns 200 but is a logged-out app shell. The 36 embedded JSON blobs are Bloks/app config and contain no reel media items. window._sharedData and window.__additionalDataLoaded are absent (long deprecated)."
+    },
+    "2_picuki": {
+      "url": "https://www.picuki.com/profile/drcaseyskitchen",
+      "status": 403,
+      "note": "Cloudflare interstitial: 'Sorry, you have been blocked'. Picuki sits behind a Cloudflare security challenge that rejects non-browser clients."
+    },
+    "3_instaloader": {
+      "method": "instaloader.Profile.from_username (anonymous, no login)",
+      "error": "ProfileNotExistsException: Profile drcaseyskitchen does not exist.",
+      "note": "Not a real 'does not exist' - this is Instagram's standard anti-anonymous-scraping response to instaloader's unauthenticated profile query. Instaloader requires a logged-in session to fetch this profile."
+    },
+    "4_profile_html": {
+      "url": "https://www.instagram.com/drcaseyskitchen/",
+      "status": 200,
+      "bytes": 378842,
+      "og_description": "844K Followers, 368 Following, 846 Posts - See Instagram photos and videos from Casey Means, MD (@drcaseyskitchen)",
+      "_sharedData_found": false,
+      "edge_owner_to_timeline_media_found": false,
+      "media_items_recovered": 0,
+      "note": "Profile counts parsed from og:description. No embedded timeline/post JSON - logged-out profile HTML no longer ships post data."
+    },
+    "5_api": {
+      "web_profile_info": {
+        "url": "https://www.instagram.com/api/v1/users/web_profile_info/?username=drcaseyskitchen",
+        "status": 429,
+        "note": "Rate-limited even with a warmed-up session (csrftoken/datr/ig_did/mid cookies set). Empty body. One polite retry after 8s also returned 429."
+      },
+      "graphql_query": {
+        "url": "https://www.instagram.com/graphql/query/",
+        "status": 403,
+        "note": "403 Forbidden. Also skipped in-script because no profile id could be obtained from the rate-limited web_profile_info call."
+      }
+    },
+    "6_feed": {
+      "url": "https://www.instagram.com/drcaseyskitchen/feed/",
+      "status": 200,
+      "is_rss_or_atom": false,
+      "note": "Returns the standard Instagram HTML web app shell, not an RSS/Atom document. Instagram does not expose a public RSS feed for profiles."
+    },
+    "7_webcache": {
+      "url": "https://webcache.googleusercontent.com/search?q=cache:instagram.com/drcaseyskitchen",
+      "status": 200,
+      "media_items_recovered": 0,
+      "note": "Returns a Google JavaScript-redirect/'enable JS' page, not a cached snapshot. Google retired the webcache: feature, so no Instagram snapshot is available here."
+    }
+  },
+  "conclusion": "As of this run, scraping Instagram post/reel data for @drcaseyskitchen without an authenticated session is not possible. Reliable options going forward: (1) the official Instagram Graph API with a Business/Creator account and access token, (2) instaloader configured with a logged-in session (L.login() or load_session_from_file), or (3) a headless browser (Playwright/Selenium) with valid Instagram cookies. Only public profile-level metadata (follower/following/post counts, name, bio) is currently retrievable anonymously."
+}
